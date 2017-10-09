@@ -1,0 +1,12 @@
+{
+  "name": "cordova-sunmi-inner-printer",
+  "version": "1.0.0",
+  "description": "Cordova Sunmi V1 Inner Printer",
+  "cordova": {
+    "id": "cordova-sunmi-inner-printer",
+    "platforms": [
+      "android"
+    ]
+  },
+  "author": "Muhammad Labib Ramadhan"
+}

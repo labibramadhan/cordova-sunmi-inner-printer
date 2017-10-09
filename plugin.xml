@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin
+  xmlns="http://www.phonegap.com/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-sunmi-inner-printer" version="1.0.0">
+  <name>SunmiInnerPrinter</name>
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+  <js-module src="www/innerprinter.js" name="InnerPrinter">
+    <clobbers target="sunmiInnerPrinter" />
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="Printer">
+        <param name="android-package" value="com.sunmi.innerprinter.Printer"/>
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <receiver android:name="com.sunmi.innerprinter.PrinterStatusReceiver" android:enabled="true">
+        <intent-filter android:priority="1000">
+          <action android:name="woyou.aidlservice.jiuv5.OUT_OF_PAPER_ACTION" />
+          <action android:name="woyou.aidlservice.jiuv5.ERROR_ACTION" />
+          <action android:name="woyou.aidlservice.jiuv5.NORMAL_ACTION" />
+          <action android:name="woyou.aidlservice.jiuv5.COVER_OPEN_ACTION" />
+          <action android:name="woyou.aidlservice.jiuv5.COVER_ERROR_ACTION" />
+          <action android:name="woyou.aidlservice.jiuv5.KNIFE_ERROR_ACTION_1" />
+          <action android:name="woyou.aidlservice.jiuv5.KNIFE_ERROR_ACTION_2" />
+          <action android:name="woyou.aidlservice.jiuv5.OVER_HEATING_ACITON" />
+          <action android:name="woyou.aidlservice.jiuv5.FIRMWARE_UPDATING_ACITON" />
+        </intent-filter>
+      </receiver>
+      <service android:name="woyou.aidlservice.jiuiv5.IWoyouService">
+        <intent-filter>
+          <action android:name="woyou.aidlservice.jiuiv5.IWoyouService" />
+        </intent-filter>
+      </service>
+    </config-file>
+    <source-file src="src/android/com/sunmi/innerprinter/Printer.java" target-dir="src/com/sunmi/innerprinter/"/>
+    <source-file src="src/android/com/sunmi/innerprinter/PrinterStatusReceiver.java" target-dir="src/com/sunmi/innerprinter/"/>
+    <source-file src="src/android/com/sunmi/utils/BitmapUtils.java" target-dir="src/com/sunmi/utils/"/>
+    <source-file src="src/android/com/sunmi/utils/ThreadPoolManager.java" target-dir="src/com/sunmi/utils/"/>
+    <source-file src="src/android/woyou/aidlservice/jiuiv5/IWoyouService.aidl" target-dir="src/woyou/aidlservice/jiuiv5/"/>
+    <source-file src="src/android/woyou/aidlservice/jiuiv5/ICallback.aidl" target-dir="src/woyou/aidlservice/jiuiv5/"/>
+  </platform>
+</plugin>
