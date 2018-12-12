@@ -71,7 +71,7 @@ module.exports = {
   },
   printBarCode: function (barCodeData, symbology, width, height, textPosition) {
     return new Promise(function (resolve, reject) {
-      cordova.exec(resolve, reject, "Printer", "printBitmap", [barCodeData, symbology, width, height, textPosition]);
+      cordova.exec(resolve, reject, "Printer", "printBarCode", [barCodeData, symbology, width, height, textPosition]);
     });
   },
   printQRCode: function (qrCodeData, moduleSize, errorLevel) {
