@@ -133,7 +133,7 @@ public class Printer extends CordovaPlugin {
       printBitmap(data.getString(0), data.getInt(1), data.getInt(2), callbackContext);
       return true;
     } else if (action.equals("printBarCode")) {
-      printBarCode(data.getString(0), data.getInt(1), data.getInt(2), data.getInt(1), data.getInt(2), callbackContext);
+      printBarCode(data.getString(0), data.getInt(1), data.getInt(2), data.getInt(3), data.getInt(4), callbackContext);
       return true;
     } else if (action.equals("printQRCode")) {
       printQRCode(data.getString(0), data.getInt(1), data.getInt(2), callbackContext);
